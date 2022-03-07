@@ -1,16 +1,19 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
+import { CfnOutput } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import { ProjectStack, ProjectStackProps } from '@almamedia-open-source/cdk-project-stack';
+import { UrlName } from '@almamedia-open-source/cdk-project-names';
+import * as s3 from 'aws-cdk-lib/aws-s3';
 
-export class TesmiStack extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
+export class TesmiStack extends ProjectStack {
+  constructor(scope: Construct, id: string, props: ProjectStackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const bucket = new s3.Bucket(this, "Bucket", {
+      bucketName: UrlName.globally(this, "tesmi"),
+    });
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'TesmiQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    new CfnOutput(this, "BucketName", {
+      value: bucket.bucketName,
+    });
   }
 }
