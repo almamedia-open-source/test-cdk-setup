@@ -14,7 +14,7 @@
     "@almamedia-open-source/cdk-project-context": "0.0.18",
     "@almamedia-open-source/cdk-project-names": "0.0.8",
     "@almamedia-open-source/cdk-project-stack": "0.0.5",
-    "@almamedia-open-source/cdk-project-target": "0.0.8",
+    "@almamedia-open-source/cdk-project-target": "0.0.9",
     "@types/aws-lambda": "8.10.93",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
